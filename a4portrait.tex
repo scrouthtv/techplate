@@ -1,0 +1,70 @@
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\setmainfont{osifont.ttf}
+\fontsize{3.5mm}{4mm}\selectfont
+
+\usepackage{tikz}
+
+\newcommand\pageheight{297mm}
+\newcommand\pagewidth{210mm}
+
+\newcommand\contentleft{20mm}
+\newcommand\contenttop{10mm}
+\newcommand\contentright{\pagewidth-10mm}
+\newcommand\contentbottom{\pageheight-10mm}
+
+\newcommand\gridsize{5mm}
+
+\newcommand\formatname{A4}
+
+\begin{document}
+\begin{tikzpicture}[yscale = -1, line width = 0.35mm]
+	\fill (0, 0) rectangle +(10mm, 5mm);
+	\fill (0, 0) rectangle +(5mm, 10mm);
+	\fill (\pagewidth, 0) rectangle +(-5mm, 10mm);
+	\fill (\pagewidth, 0) rectangle +(-10mm, 5mm);
+	\fill (0, \pageheight) rectangle +(5mm, -10mm);
+	\fill (0, \pageheight) rectangle +(10mm, -5mm);
+	\fill (\pagewidth, \pageheight) rectangle +(-5mm, -10mm);
+	\fill (\pagewidth, \pageheight) rectangle +(-10mm, -5mm);
+
+	% Zeichenbereich:
+	\draw [line width = 0.7mm] (\contentleft, \contenttop) rectangle (\contentright, \contentbottom);
+
+	% Mittellinien:
+	\begin{scope}[line width = 0.7mm, line join = round]
+		\draw (\contentleft-\gridsize, \pageheight/2) -- (\contentleft+10mm, \pageheight/2);
+		\draw (\contentright+\gridsize, \pageheight/2) -- (\contentright-10mm, \pageheight/2);
+		\draw (\pagewidth/2, \contenttop-\gridsize) -- (\pagewidth/2, \contenttop+10mm);
+		\draw (\contentleft, \pageheight/2) -- +(-\gridsize, -\gridsize/2) -- +(-\gridsize, \gridsize/2) -- cycle;
+	\end{scope}
+
+	% Feldeinteilung, muss manuell eingestellt werden
+	\draw (\contentleft, \contenttop-\gridsize) rectangle (\contentright+\gridsize, \contentbottom);
+	\foreach \y in {48.5mm, 98.5mm, 198.5mm, 248.5mm} {
+		\draw (\contentright, \y) -- +(\gridsize, 0);
+	}
+	\foreach \y/\label in {29.25mm/A, 73.5mm/B, 123.5mm/C, 173.5mm/D, 223.5mm/E, 267.75mm/F} {
+		\node at (\contentright + \gridsize/2, \y) {\label};
+	}
+	
+	\foreach \x in {55mm, 155mm} {
+		\draw (\x, \contenttop) -- +(0, -\gridsize);
+	}
+	\foreach \x/\label in {37.5mm/A, 80mm/B, 130mm/C, 177.5mm/D} {
+		\node at (\x, \contenttop - \gridsize/2) {\label};
+	}
+
+	% Schriftfeld
+	\draw (\contentright, \contentbottom) rectangle (\contentright-180mm, \contentbottom-60mm);
+	\begin{scope}[anchor = base west, xshift = \contentright-180mm, yshift = \contentbottom-60mm]
+		\input{schriftfeld}
+	\end{scope}
+
+	% Weitere Hinweise
+	\begin{scope}[anchor = south east]
+		\node [align = right] at (\contentright, \contentbottom-60mm) {Alle nicht bemaßten Fasen 1x45°\\Alle nicht bemaßten Radien R1 mm\\Alle nicht bemaßten Toleranzen nach DIN ISO 278 -- m};
+	\end{scope}
+\end{tikzpicture}
+\end{document}
