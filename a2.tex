@@ -6,13 +6,13 @@
 
 \usepackage{tikz}
 
-\newcommand\pageheight{297mm}
-\newcommand\pagewidth{420mm}
+\newcommand\pageheight{420mm}
+\newcommand\pagewidth{594mm}
 
 \newcommand\contentleft{20mm}
 \newcommand\contenttop{10mm}
-\newcommand\contentright{410mm}
-\newcommand\contentbottom{287mm}
+\newcommand\contentright{\pagewidth-10mm}
+\newcommand\contentbottom{\pageheight-10mm}
 
 \newcommand\gridsize{5mm}
 
@@ -42,20 +42,23 @@
 
 	% Feldeinteilung, muss manuell eingestellt werden
 	\draw (\contentleft-\gridsize, \contenttop-\gridsize) rectangle (\contentright+\gridsize, \contentbottom+\gridsize);
-	\foreach \y in {48.5mm, 98.5mm, 198.5mm, 248.5mm} {
+	\foreach \y in {60mm, 110mm, 160mm, 260mm, 310mm, 360mm} {
 		\draw (\contentleft, \y) -- +(-\gridsize, 0);
 		\draw (\contentright, \y) -- +(\gridsize, 0);
 	}
-	\foreach \y/\label in {29.25mm/A, 73.5mm/B, 123.5mm/C, 173.5mm/D, 223.5mm/E, 267.75mm/F} {
+	\foreach \y/\label in {35mm/A, 85mm/B, 135mm/C, 185mm/D, 235mm/E, 285mm/F, 335mm/G, 385mm/H} {
 		\node at (\contentleft - \gridsize/2, \y) {\label};
 		\node at (\contentright + \gridsize/2, \y) {\label};
 	}
 	
-	\foreach \x in {60mm, 110mm, 160mm, 260mm, 310mm, 360mm} {
+	\foreach \x in {47mm, 97mm, 147mm, 197mm, 247mm, 347mm, 397mm, 447mm, 497mm, 547mm} {
 		\draw (\x, \contenttop) -- +(0, -\gridsize);
 		\draw (\x, \contentbottom) -- +(0, \gridsize);
 	}
-	\foreach \x/\label in {35mm/1, 85mm/2, 135mm/3, 185mm/4, 235mm/5, 285mm/6, 335mm/7, 385mm/8} {
+	\foreach \x/\label in {
+		33.5mm/1, 72mm/2, 122mm/3, 172mm/4, 222mm/5, 272mm/6, 322mm/7, 372mm/8, 422mm/9, 472mm/10, 
+		522mm/11, 565.5mm/12
+	} {
 		\node at (\x, \contenttop - \gridsize/2) {\label};
 		\node at (\x, \contentbottom + \gridsize/2) {\label};
 	}
