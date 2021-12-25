@@ -1,0 +1,93 @@
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\setmainfont{osifont.ttf}
+\fontsize{3.5mm}{4mm}\selectfont
+
+\usepackage{tikz}
+
+\newcommand\pageheight{841mm}
+\newcommand\pagewidth{1189mm}
+
+\newcommand\contentleft{20mm}
+\newcommand\contenttop{10mm}
+\newcommand\contentright{\pagewidth-10mm}
+\newcommand\contentbottom{\pageheight-10mm}
+
+\newcommand\gridsize{5mm}
+
+\newcommand\formatname{A3}
+
+\begin{document}
+\begin{tikzpicture}[yscale = -1, line width = 0.35mm]
+	\fill (0, 0) rectangle +(10mm, 5mm);
+	\fill (0, 0) rectangle +(5mm, 10mm);
+	\fill (\pagewidth, 0) rectangle +(-5mm, 10mm);
+	\fill (\pagewidth, 0) rectangle +(-10mm, 5mm);
+	\fill (0, \pageheight) rectangle +(5mm, -10mm);
+	\fill (0, \pageheight) rectangle +(10mm, -5mm);
+	\fill (\pagewidth, \pageheight) rectangle +(-5mm, -10mm);
+	\fill (\pagewidth, \pageheight) rectangle +(-10mm, -5mm);
+
+	% Zeichenbereich:
+	\draw [line width = 0.7mm] (\contentleft, \contenttop) rectangle (\contentright, \contentbottom);
+
+	% Mittellinien:
+	\begin{scope}[line width = 0.7mm, line join = round]
+		\draw (\contentleft-\gridsize, \pageheight/2) -- (\contentleft+10mm, \pageheight/2);
+		\draw (\contentright+\gridsize, \pageheight/2) -- (\contentright-10mm, \pageheight/2);
+		\draw (\pagewidth/2, \contenttop-\gridsize) -- (\pagewidth/2, \contenttop+10mm);
+		\draw (\pagewidth/2, \contentbottom+\gridsize) -- (\pagewidth/2, \contentbottom-10mm);
+	\end{scope}
+
+	% Feldeinteilung, muss manuell eingestellt werden
+	\draw (\contentleft-\gridsize, \contenttop-\gridsize) rectangle (\contentright+\gridsize, \contentbottom+\gridsize);
+	\foreach \y in {
+		70.5mm, 120.5mm, 170.5mm, 220.5mm, 270.5mm,
+		320.5mm, 370.5mm, 420.5mm, 470.5mm, 520.5mm, 570.5mm,
+		620.5mm, 670.5mm, 720.5mm, 770.5mm, 820.5mm
+	} {
+		\draw (\contentleft, \y) -- +(-\gridsize, 0);
+		\draw (\contentright, \y) -- +(\gridsize, 0);
+	}
+	\foreach \y/\label in {
+		40.25mm/A, 95.5mm/B, 145.5mm/C, 195.5mm/D, 245.5mm/E, 295.5mm/F,
+		345.5mm/G, 395.5mm/H, 445.5mm/J, 495.5mm/K, 545.5mm/L,
+		595.5mm/M, 645.5mm/N, 695.5mm/P, 745.5mm/Q, 795.5mm/R,
+		825.75mm/S
+	} {
+		\node at (\contentleft - \gridsize/2, \y) {\label};
+		\node at (\contentright + \gridsize/2, \y) {\label};
+	}
+	
+	\foreach \x in {
+		44.5mm, 94.5mm, 144.5mm, 194.5mm, 244.5mm, 294.5mm, 344.5mm,
+		394.5mm, 444.5mm, 494.5mm, 544.5mm, 594.5mm, 644.5mm, 694.5mm,
+		744.5mm, 794.5mm, 844.5mm, 894.5mm, 944.5mm, 994.5mm, 1044.5mm,
+		1094.5mm, 1144.5mm
+	} {
+		\draw (\x, \contenttop) -- +(0, -\gridsize);
+		\draw (\x, \contentbottom) -- +(0, \gridsize);
+	}
+	\foreach \x/\label in {
+		31.25mm/1, 69.5mm/2, 119.5mm/3, 169.5mm/4, 219.5mm/5, 269.5mm/6, 319.5mm/7,
+		369.5mm/8, 419.5mm/9, 469.5mm/10, 519.5mm/11, 569.5mm/12, 619.5mm/13,
+		669.5mm/14, 719.5mm/15, 769.5mm/16, 819.5mm/17, 869.5mm/18, 919.5mm/19,
+		969.5mm/20, 1019.5mm/21, 1069.5mm/22, 1119.5mm/23, 1161.8mm/24
+	} {
+		\node at (\x, \contenttop - \gridsize/2) {\label};
+		\node at (\x, \contentbottom + \gridsize/2) {\label};
+	}
+
+	% Schriftfeld
+	\draw (\contentright, \contentbottom) rectangle (\contentright-180mm, \contentbottom-60mm);
+	\begin{scope}[anchor = base west, xshift = \contentright-180mm, yshift = \contentbottom-60mm]
+		\input{schriftfeld}
+	\end{scope}
+
+	% Weitere Hinweise
+	\begin{scope}[anchor = south east]
+		\node [align = right] at (\contentright, \contentbottom-60mm) {Alle nicht bemaßten Fasen 1x45°\\Alle nicht bemaßten Radien R1 mm\\Alle nicht bemaßten Toleranzen nach DIN ISO 278 -- m};
+	\end{scope}
+\end{tikzpicture}
+\end{document}
