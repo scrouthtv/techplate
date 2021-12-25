@@ -56,52 +56,8 @@
 	% Schriftfeld
 	\draw (287mm, 200mm) rectangle (107mm, 140mm);
 
-	\begin{scope}[anchor = base west]
-		% Zeilen
-		\draw (107mm, 155mm) -- (287mm, 155mm);
-		\draw (107mm, 185mm) -- (287mm, 185mm);
-
-		% Zeile 1
-		\node at (107mm, 144mm) {Genehmigende Person};
-		\node at (107mm, 153mm) {\fontsize{10mm}{11mm}\selectfont Anje Musterfrau};
-		\node at (197mm, 144mm) {Erstellende Person};
-		\node at (197mm, 153mm) {\fontsize{10mm}{11mm}\selectfont Max Mustermann};
-		\foreach \x in {197mm} {
-			\draw (\x, 140mm) -- (\x, 155mm);
-		}
-
-		% Zeile 2
-		\node at (107mm, 159mm) {Eigentümer};
-		\node at (137mm, 159mm) {Titel};
-		\node at (137mm, 168mm) {\fontsize{10mm}{11mm}\selectfont Titel};
-		\node at (137mm, 183mm) {\fontsize{10mm}{11mm}\selectfont Zus. Titel};
-		\foreach \x in {137mm, 227mm} {
-			\draw (\x, 155mm) -- (\x, 185mm);
-		}
-		\draw (227mm, 170mm) -- (287mm, 170mm);
-		\node at (227mm, 159mm) {Sachnummer};
-		\node at (227mm, 168mm) {\fontsize{10mm}{11mm}\selectfont 0001};
-		\node at (227mm, 174mm) {Status};
-		\node at (227mm, 183mm) {\fontsize{10mm}{11mm}\selectfont gesperrt};
-
-		% Zeile 3
-		\node at (107mm, 189mm) {Ausgabedatum};
-		\node at (107mm, 198mm) {\fontsize{10mm}{11mm}\selectfont 25.12.2021};
-		\node at (150mm, 189mm) {Dokumentenart};
-		\node at (150mm, 198mm) {\fontsize{10mm}{11mm}\selectfont Zeichnung};
-		\node at (202mm, 189mm) {Sprache};
-		\node at (202mm, 198mm) {\fontsize{10mm}{11mm}\selectfont DE};
-		\node at (216mm, 189mm) {Maßstab};
-		\node at (216mm, 198mm) {\fontsize{10mm}{11mm}\selectfont 1:1};
-		\node at (231mm, 189mm) {Format};
-		\node at (231mm, 198mm) {\fontsize{10mm}{11mm}\selectfont A4};
-		\node at (247mm, 189mm) {Rev.};
-		\node at (247mm, 198mm) {\fontsize{10mm}{11mm}\selectfont A};
-		\node at (262mm, 189mm) {Blatt};
-		\node at (262mm, 198mm) {\fontsize{10mm}{11mm}\selectfont 01/99};
-		\foreach \x in {150mm, 202mm, 216mm, 231mm, 247mm, 262mm} {
-			\draw (\x, 185mm) -- (\x, 200mm);
-		}
+	\begin{scope}[anchor = base west, xshift = 107mm, yshift = 140mm]
+		\input{schriftfeld}
 	\end{scope}
 
 	% Weitere Hinweise

@@ -1,0 +1,45 @@
+% Zeilen
+\draw (0mm, 15mm) -- (180mm, 15mm);
+\draw (0mm, 45mm) -- (180mm, 45mm);
+
+% Zeile 1
+\node at (0mm, 4mm) {Genehmigende Person};
+\node at (0mm, 13mm) {\fontsize{10mm}{11mm}\selectfont Anja Musterfrau};
+\node at (90mm, 4mm) {Erstellende Person};
+\node at (90mm, 13mm) {\fontsize{10mm}{11mm}\selectfont Max Mustermann};
+\foreach \x in {90mm} {
+	\draw (\x, 0mm) -- (\x, 15mm);
+}
+
+% Zeile 2
+\node at (0mm, 19mm) {Eigentümer};
+\node at (30mm, 19mm) {Titel};
+\node at (30mm, 28mm) {\fontsize{10mm}{11mm}\selectfont Titel};
+\node at (30mm, 43mm) {\fontsize{10mm}{11mm}\selectfont Zus. Titel};
+\foreach \x in {30mm, 120mm} {
+	\draw (\x, 15mm) -- (\x, 45mm);
+}
+\draw (120mm, 30mm) -- (180mm, 30mm);
+\node at (120mm, 19mm) {Sachnummer};
+\node at (120mm, 28mm) {\fontsize{10mm}{11mm}\selectfont 0001};
+\node at (120mm, 34mm) {Status};
+\node at (120mm, 43mm) {\fontsize{10mm}{11mm}\selectfont gesperrt};
+
+% Zeile 3
+\node at (0mm, 49mm) {Ausgabedatum};
+\node at (0mm, 58mm) {\fontsize{10mm}{11mm}\selectfont 25.12.2021};
+\node at (43mm, 49mm) {Dokumentenart};
+\node at (43mm, 58mm) {\fontsize{10mm}{11mm}\selectfont Zeichnung};
+\node at (95mm, 49mm) {Sprache};
+\node at (95mm, 58mm) {\fontsize{10mm}{11mm}\selectfont DE};
+\node at (109mm, 49mm) {Maßstab};
+\node at (109mm, 58mm) {\fontsize{10mm}{11mm}\selectfont 1:1};
+\node at (124mm, 49mm) {Format};
+\node at (124mm, 58mm) {\fontsize{10mm}{11mm}\selectfont A4};
+\node at (140mm, 49mm) {Rev.};
+\node at (140mm, 58mm) {\fontsize{10mm}{11mm}\selectfont A};
+\node at (155mm, 49mm) {Blatt};
+\node at (155mm, 58mm) {\fontsize{10mm}{11mm}\selectfont 01/99};
+\foreach \x in {43mm, 95mm, 109mm, 124mm, 140mm, 155mm} {
+	\draw (\x, 45mm) -- (\x, 60mm);
+}
