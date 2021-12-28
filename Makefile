@@ -3,7 +3,7 @@ SVGS := a0.svg a1.svg a2.svg a3.svg a4landscape.svg a4portrait.svg
 
 .PHONY : all phony_explicit
 
-all : $(PDFS) $(SVGS)
+all : $(PDFS) #$(SVGS)
 
 phony_explicit : # https://stackoverflow.com/a/38803814/7242251
 
